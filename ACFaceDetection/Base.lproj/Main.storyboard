@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rYx-kj-JkS" userLabel="imageView">
+                                <rect key="frame" x="150" y="60" width="300" height="300"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Hst-1Y-slv"/>
+                                    <constraint firstAttribute="width" constant="300" id="f7C-I1-DgH"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lE-Fo-4xT">
+                                <rect key="frame" x="282" y="440" width="36" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hku-0L-25V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10C-Gc-yWn">
+                                <rect key="frame" x="270" y="480" width="60" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Features"/>
+                                <connections>
+                                    <action selector="featuresButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K6i-GP-EfL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1Q-Ly-eln">
+                                <rect key="frame" x="284" y="520" width="33" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Eyes"/>
+                                <connections>
+                                    <action selector="eyesButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Goi-pt-cVS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-i7-n3t">
+                                <rect key="frame" x="280" y="560" width="41" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Effect"/>
+                                <state key="disabled" title="Loading..."/>
+                                <connections>
+                                    <action selector="effectButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w08-wm-Y67"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7lE-Fo-4xT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5x7-7e-dOI"/>
+                            <constraint firstItem="rYx-kj-JkS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="PsA-Ll-Cwz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Edh-i7-n3t" secondAttribute="bottom" constant="10" id="Tgz-vi-uBM"/>
+                            <constraint firstItem="rYx-kj-JkS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aQ6-Nz-WDS"/>
+                            <constraint firstItem="10C-Gc-yWn" firstAttribute="top" secondItem="7lE-Fo-4xT" secondAttribute="bottom" constant="10" id="ax8-V3-tCP"/>
+                            <constraint firstItem="10C-Gc-yWn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eDT-AS-v5v"/>
+                            <constraint firstItem="Y1Q-Ly-eln" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mhW-hx-bWE"/>
+                            <constraint firstItem="Edh-i7-n3t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pAG-yc-Zzq"/>
+                            <constraint firstItem="Y1Q-Ly-eln" firstAttribute="top" secondItem="10C-Gc-yWn" secondAttribute="bottom" constant="10" id="psX-lP-kAC"/>
+                            <constraint firstItem="Edh-i7-n3t" firstAttribute="top" secondItem="Y1Q-Ly-eln" secondAttribute="bottom" constant="10" id="ypq-qR-WSD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="effectButton" destination="Edh-i7-n3t" id="YUS-l7-vcN"/>
+                        <outlet property="imageView" destination="rYx-kj-JkS" id="mle-ku-5Lo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="image.jpg" width="600" height="600"/>
+    </resources>
+</document>
