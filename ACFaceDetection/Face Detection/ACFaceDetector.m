@@ -8,6 +8,8 @@
 
 #import "ACFaceDetector.h"
 
+#define DEG_TO_RAD(__ANGLE__) ((__ANGLE__) * (M_PI / 180.0f)) // PI / 180
+
 @import CoreImage;
 @import ImageIO;
 
@@ -20,6 +22,8 @@ static ACFaceDetector *_sharedDetector = nil;
     dispatch_queue_t _faceEyesQueue;
     dispatch_queue_t _eyesEffectQueue;
 }
+
+@property (nonatomic, strong) CIDetector *detector;
 
 @end
 
@@ -56,16 +60,19 @@ static ACFaceDetector *_sharedDetector = nil;
     
     CIContext *context = [CIContext contextWithOptions:nil];
     NSDictionary *opts = @{CIDetectorAccuracy : CIDetectorAccuracyHigh};
-    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace
-                                              context:context
-                                              options:opts];
+    if (!_detector)
+    {
+        _detector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                       context:context
+                                       options:opts];
+    }
     
     opts = @{CIDetectorImageOrientation : [[cImage properties] valueForKey:(NSString *)kCGImagePropertyOrientation]};
     
-    return [detector featuresInImage:cImage options:opts];
+    return [_detector featuresInImage:cImage options:opts];
 }
 
-- (void)addRectInView:(UIView *)view toPoint:(CGPoint)point transformation:(CGAffineTransform)transformation {
+- (void)addRectInView:(UIView *)view toPoint:(CGPoint)point withAngle:(CGFloat)angle transformation:(CGAffineTransform)transformation {
     CGFloat fWidth = 30.0f;
     CGFloat fHeight = 20.0f;
     CGRect rect = CGRectMake(point.x/_correction - fWidth/2,
@@ -79,10 +86,13 @@ static ACFaceDetector *_sharedDetector = nil;
     [test setAlpha:0.4];
     [test.layer setBorderColor:[UIColor blueColor].CGColor];
     [test.layer setBorderWidth:1.0];
+    
+    [test setTransform:CGAffineTransformMakeRotation(DEG_TO_RAD(angle))];
+    
     [view addSubview:test];
 }
 
-- (void)addBoundingRect:(CGRect)rect inView:(UIView *)view transformation:(CGAffineTransform)transformation {
+- (void)addBoundingRect:(CGRect)rect inView:(UIView *)view withAngle:(CGFloat)angle transformation:(CGAffineTransform)transformation {
     rect = CGRectMake(rect.origin.x/_correction,
                       rect.origin.y/_correction,
                       rect.size.width/_correction,
@@ -94,6 +104,9 @@ static ACFaceDetector *_sharedDetector = nil;
     [test setAlpha:0.3];
     [test.layer setBorderColor:[UIColor blueColor].CGColor];
     [test.layer setBorderWidth:1.0];
+    
+    [test setTransform:CGAffineTransformMakeRotation(DEG_TO_RAD(angle))];
+    
     [view addSubview:test];
 }
 
@@ -129,11 +142,14 @@ static ACFaceDetector *_sharedDetector = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             for (CIFaceFeature *faceFeature in features)
             {
-                [self addRectInView:imageView toPoint:faceFeature.leftEyePosition transformation:transform];
-                [self addRectInView:imageView toPoint:faceFeature.rightEyePosition transformation:transform];
-                [self addRectInView:imageView toPoint:faceFeature.mouthPosition transformation:transform];
+                CGFloat faceAngle = [faceFeature faceAngle];
+                NSLog(@"Face rotated: %@", [faceFeature hasFaceAngle] ? [NSString stringWithFormat:@"%f", faceAngle] : @"NO");
                 
-                [self addBoundingRect:faceFeature.bounds inView:imageView transformation:transform];
+                [self addRectInView:imageView toPoint:faceFeature.leftEyePosition withAngle:faceAngle transformation:transform];
+                [self addRectInView:imageView toPoint:faceFeature.rightEyePosition withAngle:faceAngle transformation:transform];
+                [self addRectInView:imageView toPoint:faceFeature.mouthPosition withAngle:faceAngle transformation:transform];
+                
+                [self addBoundingRect:faceFeature.bounds inView:imageView withAngle:faceAngle transformation:transform];
             }
             
             if (completion) completion(success);
@@ -159,8 +175,11 @@ static ACFaceDetector *_sharedDetector = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             for (CIFaceFeature *faceFeature in features)
             {
-                [self addRectInView:imageView toPoint:faceFeature.leftEyePosition transformation:transform];
-                [self addRectInView:imageView toPoint:faceFeature.rightEyePosition transformation:transform];
+                CGFloat faceAngle = [faceFeature faceAngle];
+                NSLog(@"Face rotated: %@", [faceFeature hasFaceAngle] ? [NSString stringWithFormat:@"%f", faceAngle] : @"NO");
+                
+                [self addRectInView:imageView toPoint:faceFeature.leftEyePosition withAngle:faceAngle transformation:transform];
+                [self addRectInView:imageView toPoint:faceFeature.rightEyePosition withAngle:faceAngle transformation:transform];
             }
             
             if (completion) completion(success);
