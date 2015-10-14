@@ -19,6 +19,8 @@
 		3F10AB441BBE99FC007A9228 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F10AB431BBE99FC007A9228 /* CoreGraphics.framework */; };
 		3F900A091BC2A5B100F3B8E9 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F900A081BC2A5B100F3B8E9 /* image.jpg */; settings = {ASSET_TAGS = (); }; };
 		3FB12E291BC2BD1F00E54FCB /* UIImageView+Subviews.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB12E281BC2BD1F00E54FCB /* UIImageView+Subviews.m */; settings = {ASSET_TAGS = (); }; };
+		3FC6A4C31BCE3FA70088EFA2 /* ACImageProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC6A4C21BCE3FA70088EFA2 /* ACImageProcessor.m */; settings = {ASSET_TAGS = (); }; };
+		3FC6A4C61BCE45670088EFA2 /* UIImageView+FaceFeatures.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC6A4C51BCE45670088EFA2 /* UIImageView+FaceFeatures.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,10 @@
 		3F900A081BC2A5B100F3B8E9 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		3FB12E271BC2BD1F00E54FCB /* UIImageView+Subviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Subviews.h"; sourceTree = "<group>"; };
 		3FB12E281BC2BD1F00E54FCB /* UIImageView+Subviews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Subviews.m"; sourceTree = "<group>"; };
+		3FC6A4C11BCE3FA70088EFA2 /* ACImageProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACImageProcessor.h; sourceTree = "<group>"; };
+		3FC6A4C21BCE3FA70088EFA2 /* ACImageProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACImageProcessor.m; sourceTree = "<group>"; };
+		3FC6A4C41BCE45670088EFA2 /* UIImageView+FaceFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+FaceFeatures.h"; sourceTree = "<group>"; };
+		3FC6A4C51BCE45670088EFA2 /* UIImageView+FaceFeatures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+FaceFeatures.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 				3F10AB271BBE7E26007A9228 /* ViewController.h */,
 				3F10AB281BBE7E26007A9228 /* ViewController.m */,
 				3F10AB391BBE992D007A9228 /* Face Detection */,
+				3FC6A4C01BCE3EFB0088EFA2 /* Image Processing */,
 				3FB12E261BC2BCEF00E54FCB /* Categories */,
 				3F10AB2A1BBE7E26007A9228 /* Main.storyboard */,
 				3F10AB2D1BBE7E26007A9228 /* Assets.xcassets */,
@@ -134,8 +141,19 @@
 			children = (
 				3FB12E271BC2BD1F00E54FCB /* UIImageView+Subviews.h */,
 				3FB12E281BC2BD1F00E54FCB /* UIImageView+Subviews.m */,
+				3FC6A4C41BCE45670088EFA2 /* UIImageView+FaceFeatures.h */,
+				3FC6A4C51BCE45670088EFA2 /* UIImageView+FaceFeatures.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		3FC6A4C01BCE3EFB0088EFA2 /* Image Processing */ = {
+			isa = PBXGroup;
+			children = (
+				3FC6A4C11BCE3FA70088EFA2 /* ACImageProcessor.h */,
+				3FC6A4C21BCE3FA70088EFA2 /* ACImageProcessor.m */,
+			);
+			name = "Image Processing";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,9 +229,11 @@
 			files = (
 				3F10AB3C1BBE9959007A9228 /* ACFaceDetector.m in Sources */,
 				3F10AB291BBE7E26007A9228 /* ViewController.m in Sources */,
+				3FC6A4C31BCE3FA70088EFA2 /* ACImageProcessor.m in Sources */,
 				3FB12E291BC2BD1F00E54FCB /* UIImageView+Subviews.m in Sources */,
 				3F10AB261BBE7E26007A9228 /* AppDelegate.m in Sources */,
 				3F10AB231BBE7E26007A9228 /* main.m in Sources */,
+				3FC6A4C61BCE45670088EFA2 /* UIImageView+FaceFeatures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

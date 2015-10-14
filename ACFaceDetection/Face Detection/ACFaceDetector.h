@@ -12,8 +12,9 @@
 
 + (ACFaceDetector *)sharedDetector;
 
+- (NSArray *)detectFacesFeaturesInImage:(UIImage *)image;
+
 - (void)detectFacesInImageView:(UIImageView *)imageView completion:(void(^)(BOOL success))completion;
 - (void)detectEyesInImageView:(UIImageView *)imageView completion:(void(^)(BOOL success))completion;
-- (void)makeBulgeEyesInImageView:(UIImageView *)imageView completion:(void(^)(UIImage *image))completion;
 
 @end

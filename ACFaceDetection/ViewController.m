@@ -41,6 +41,7 @@
 
 - (IBAction)featuresButtonAction:(UIButton *)sender {
     [self resetImageViewData];
+    
     [[ACFaceDetector sharedDetector] detectFacesInImageView:_imageView completion:^(BOOL success) {
         NSLog(@"Face features %@", success ? @"detected!" : @"not detected!");
     }];
@@ -48,6 +49,7 @@
 
 - (IBAction)eyesButtonAction:(UIButton *)sender {
     [self resetImageViewData];
+    
     [[ACFaceDetector sharedDetector] detectEyesInImageView:_imageView completion:^(BOOL success) {
         NSLog(@"Face features %@", success ? @"detected!" : @"not detected!");
     }];
@@ -55,9 +57,9 @@
 
 - (IBAction)effectButtonAction:(UIButton *)sender {
     [self resetImageViewData];
-    
     [_effectButton setEnabled:NO];
-    [[ACFaceDetector sharedDetector] makeBulgeEyesInImageView:_imageView completion:^(UIImage *image) {
+    
+    [[ACImageProcessor sharedImageProcessor] makeBulgeEyesInImageView:_imageView completion:^(UIImage *image) {
         if (image) [_imageView setImage:image];
         [_effectButton setEnabled:YES];
     }];

@@ -16,5 +16,6 @@
 #import <Foundation/Foundation.h>
 
 #import "ACFaceDetector.h"
+#import "ACImageProcessor.h"
 
 #endif /* ACFaceDetection_Prefix_pch */
