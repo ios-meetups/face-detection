@@ -18,6 +18,8 @@ ACImageProcessor *_sharedImageProcessor = nil;
 
 @implementation ACImageProcessor
 
+#pragma mark - Public Methods
+
 + (ACImageProcessor *)sharedImageProcessor {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -37,7 +39,7 @@ ACImageProcessor *_sharedImageProcessor = nil;
     return self;
 }
 
-#pragma mark - Private Methods
+#pragma mark - CIFilter
 
 - (CIImage *)applyBumpDistortionToImage:(CIImage *)image position:(CGPoint)postion context:(CIContext *)context {
     if (!image) return nil;
@@ -51,7 +53,7 @@ ACImageProcessor *_sharedImageProcessor = nil;
     return [filter outputImage];
 }
 
-#pragma mark - Public Methods
+#pragma mark - Eyes Effect
 
 - (void)makeBulgeEyesInImageView:(UIImageView *)imageView completion:(void (^)(UIImage *))completion {
     if (!imageView)

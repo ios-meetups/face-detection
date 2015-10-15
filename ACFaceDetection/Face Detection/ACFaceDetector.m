@@ -27,6 +27,8 @@ static ACFaceDetector *_sharedDetector = nil;
 
 @implementation ACFaceDetector
 
+#pragma mark - Public Methods
+
 + (ACFaceDetector *)sharedDetector {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -48,7 +50,7 @@ static ACFaceDetector *_sharedDetector = nil;
     return self;
 }
 
-#pragma mark - Public Methods
+#pragma mark - CIDetector
 
 - (NSArray *)detectFacesFeaturesInImage:(UIImage *)image {
     if (!image) return nil;
@@ -68,6 +70,8 @@ static ACFaceDetector *_sharedDetector = nil;
     
     return [_detector featuresInImage:cImage options:opts];
 }
+
+#pragma mark - All Face Features Visualization
 
 - (void)detectFacesInImageView:(UIImageView *)imageView completion:(void (^)(BOOL))completion {
     if (!imageView)
@@ -101,6 +105,8 @@ static ACFaceDetector *_sharedDetector = nil;
         });
     });
 }
+
+#pragma mark - Eyes Vizualization
 
 - (void)detectEyesInImageView:(UIImageView *)imageView completion:(void (^)(BOOL))completion {
     if (!imageView) 
